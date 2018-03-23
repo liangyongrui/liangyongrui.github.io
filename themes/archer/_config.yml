@@ -71,7 +71,7 @@ comment:
 # Busuanzi pv analytics
 busuanzi: true
 # Baidu analytics
-baidu_analytics: 
+baidu_analytics: be64001f0039d11d569c12d6a465ec29
 # Google analytics
 google_analytics: 
 # CNZZ analytics
@@ -79,7 +79,8 @@ CNZZ_analytics:
 
 # ========== Others ========== #
 # favicon
-favicon: /assets/favicon.ico
+# favicon: /assets/favicon.ico
+favicon: /avatar/umr.jpg
 # truncate length of abstracts in index page (the default is 300, there will be no abstruct if you input 0)
 truncate_length: 100 
 # enable toc
