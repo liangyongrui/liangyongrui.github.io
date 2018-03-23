@@ -81,23 +81,3 @@ deploy:
   type: git
   repo: git@github.com:liangyongrui/liangyongrui.github.io.git
   branch: master
-
-# 添加sidebar启动支持
-jsonContenhet:
-  meta: true
-  pages: false
-  posts:
-    title: true
-    date: true
-    path: true
-    text: false
-    raw: false
-    content: false
-    slug: false
-    updated: false
-    comments: false
-    link: false
-    permalink: true
-    excerpt: false
-    categories: true
-    tags: true

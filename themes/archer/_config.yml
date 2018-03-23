@@ -89,3 +89,8 @@ toc: true
 index_intro_height: 50
 post_intro_height: 50
 about_intro_height: 50
+
+# =====自定义===== #
+# 是否开启侧边Categories[Cate] 我觉得没用。。
+categories:
+  enable: false
