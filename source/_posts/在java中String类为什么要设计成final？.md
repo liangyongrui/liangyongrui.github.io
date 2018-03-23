@@ -3,8 +3,9 @@ title: 在java中String类为什么要设计成final？
 date: 2017-06-21 10:40:51
 tags: java
 ---
+# 在java中String类为什么要设计成final？
 
-String本质上是一个final类
+## String本质上是一个final类
 
 ```java
 public final class String
@@ -16,10 +17,10 @@ public final class String
 内部是一个 private final char数组，内部的所有方法都没有对这个char[]中的值进行修改。
 
 所以外部看起来他是不变的。
- 
 
+## 不变的好处
 
-不变有很多的好处，例如在想得到一个字符串的追加串。
+例如在想得到一个字符串的追加串。
 
 ```java
  //不可变的String
@@ -40,4 +41,4 @@ public static StringBuilder appendSb(StringBuilder sb) {
 
 最后就是，字符串有一个字符串常量池的东西，这可以大大节省内存。然而要实现字符串常量池就基本的操作就是把String设置成immutable。
 
-参考资料https://www.zhihu.com/question/31345592
+参考资料:[在java中String类为什么要设计成final？](https://www.zhihu.com/question/31345592)

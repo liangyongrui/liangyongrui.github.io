@@ -3,11 +3,15 @@ title: Mysql查找表中的多组前n大元素
 date: 2018-03-22 16:40:51
 tags: mysql
 ---
+# Mysql查找表中的多组前n大元素
+
 如果时单组很简单，只需要排序后去前n个就行了，但是多组排序似乎就不是那么好做了。
 
-解法：
+## 解法：
 
 **假设需要比较的字段是a，找出前n大的行，则答案为count(比a小且和比较行在同一组的行) < n的行。**（说起来有点绕。。看个例子就懂了）
+
+## 例子
 
  假设有这样的一个表 Employee
 
@@ -49,5 +53,4 @@ WHERE
 | 1          | Max      | 90000  |
 | 1          | Randy    | 85000  |
 
-参考资料：https://leetcode.com/problems/department-top-three-salaries/solution/
-
+参考资料：[Department Top Three Salaries](https://leetcode.com/problems/department-top-three-salaries/solution/)

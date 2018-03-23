@@ -3,14 +3,17 @@ title: Fastcgi与php-fpm
 date: 2018-02-24 10:40:51
 tags: php
 ---
+# Fastcgi与php-fpm
 
-### CGI
+这两个概念很容易混淆
+
+## CGI
 
 CGI是为了保证web server传递过来的数据是标准格式的，它是一个协议，方便CGI程序的编写者。
 
 当web server收到/index.php这个请求后，会启动对应的CGI程序，这里就是PHP的解析器。接下来PHP解析器会解析php.ini文件，初始化执行环境，然后处理请求，再以CGI规定的格式返回处理后的结果，退出进程。web server再把结果返回给浏览器。
 
-### Fastcgi
+## Fastcgi
 
 Fastcgi是CGI的更高级的一种方式，是用来提高CGI程序性能的。
 
@@ -18,5 +21,6 @@ CGI针对每个http请求都是fork一个新进程来进行处理，处理过程
 
 而Fastcgi则会先fork一个master，解析配置文件，初始化执行环境，然后再fork多个worker。当请求过来时，master会传递给一个worker，然后立即可以接受下一个请求。这样就避免了重复的劳动，效率自然是高。而且当worker不够用时，master可以根据配置预先启动几个worker等着；当然空闲worker太多时，也会停掉一些，这样就提高了性能，也节约了资源。这就是Fastcgi的对进程的管理。大多数Fastcgi实现都会维护一个进程池。
 
-### PHP_FPM
+## PHP_FPM
+
 它是一个实现了Fastcgi协议的程序,用来管理Fastcgi起的进程的,即能够调度php-cgi进程的程序。现已在PHP内核中就集成了PHP-FPM，使用--enalbe-fpm这个编译参数即可。另外，修改了php.ini配置文件后，没办法平滑重启，需要重启php-fpm才可。此时新fork的worker会用新的配置，已经存在的worker继续处理完手上的活。
