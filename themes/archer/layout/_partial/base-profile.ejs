@@ -28,4 +28,13 @@
             <a href = "<%- url_for("/about") %>" >ABOUT ME</a>
         </div>
     <% } %>
+    <% if (theme.busuanzi) { %>
+    <div style="text-align: center">
+            <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                <span class="iconfont-archer">&#xe602;</span>
+                本站总访问量：
+                <span id="busuanzi_value_page_pv"></span>次
+            </span>
+    </div>
+    <% } %>
 </div>
