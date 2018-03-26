@@ -1,6 +1,7 @@
 ---
 title: Fastcgi与php-fpm
 date: 2018-02-24 10:40:51
+link: 18022410
 tags: php
 ---
 # Fastcgi与php-fpm

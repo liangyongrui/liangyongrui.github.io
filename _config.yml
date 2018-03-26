@@ -11,11 +11,17 @@ author: John Doe
 language:
 timezone:
 
+# abbrlink config
+abbrlink:
+  alg: crc32  #support crc16(default) and crc32
+  rep: hex    #support dec(default) and hex
+
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://yoursite.com
 root: /
-permalink: :year/:month/:day/:title/
+# permalink: :year/:month/:day/:title/
+permalink: /posts/:link/
 permalink_defaults:
 
 # Directory
@@ -81,3 +87,4 @@ deploy:
   type: git
   repo: git@github.com:liangyongrui/liangyongrui.github.io.git
   branch: master
+

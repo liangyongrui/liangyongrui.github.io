@@ -1,6 +1,7 @@
 ---
 title: 在java中String类为什么要设计成final？
 date: 2017-06-21 10:40:51
+link: 17062110
 tags: java
 ---
 # 在java中String类为什么要设计成final？
