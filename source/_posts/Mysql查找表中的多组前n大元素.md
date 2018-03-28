@@ -1,7 +1,7 @@
 ---
 title: Mysql查找表中的多组前n大元素
 date: 2018-03-22 16:40:51
-link: 18032216
+link: 180322
 tags: mysql
 ---
 # Mysql查找表中的多组前n大元素

@@ -1,7 +1,7 @@
 ---
 title: Mysql中交换行操作
 date: 2018-03-20 17:00:00
-link: 18032017
+link: 180320-1
 tags: mysql
 ---
 # Mysql中交换行操作

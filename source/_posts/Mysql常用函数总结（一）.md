@@ -1,7 +1,7 @@
 ---
 title: Mysql常用函数总结（一）
 date: 2018-03-21 16:40:51
-link: 18032116
+link: 180321
 tags: mysql
 ---
 # Mysql常用函数总结（一）

@@ -1,7 +1,7 @@
 ---
 title: Mysql中Union和OR性能对比
 date: 2018-03-20 16:40:51
-link: 18032016
+link: 180320
 tags: mysql
 ---
 # Mysql中Union和OR性能对比
