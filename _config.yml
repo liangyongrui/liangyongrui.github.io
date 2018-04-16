@@ -88,3 +88,5 @@ deploy:
   repo: git@github.com:liangyongrui/liangyongrui.github.io.git
   branch: master
 
+mathjax:
+    enable: true
