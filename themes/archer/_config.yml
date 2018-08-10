@@ -62,8 +62,8 @@ comment:
   # Gitment  site: https://github.com/imsun/gitment
   gitment_owner: liangyongrui
   gitment_repo: liangyongrui.github.io
-  gitment_client_id: 3d8b59e598bf82b3bd9b
-  gitment_client_secret: 82cd59db33c779734c5e45986e4477cd0debd4c2
+  gitment_client_id: 89fa5ac2e674045b3f6d
+  gitment_client_secret: 6fa75b0246a7a376e9513375aa2a1efda522e495
   # Youyan  site: http://www.uyan.cc/
   youyan_uid: 
 
