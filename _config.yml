@@ -90,6 +90,3 @@ deploy:
 - type: git
   repo: llysrv@58.87.118.177:/home/llysrv/blog.git
   branch: master
-
-mathjax:
-    enable: true
