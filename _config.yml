@@ -84,8 +84,11 @@ theme: archer
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+- type: git
   repo: git@github.com:liangyongrui/liangyongrui.github.io.git
+  branch: master
+- type: git
+  repo: llysrv@58.87.118.177:/home/llysrv/blog.git
   branch: master
 
 mathjax:
