@@ -4,7 +4,6 @@ date: 2018-02-24 10:40:51
 link: 180224
 tags: php
 ---
-# Fastcgi与php-fpm
 
 这两个概念很容易混淆
 
