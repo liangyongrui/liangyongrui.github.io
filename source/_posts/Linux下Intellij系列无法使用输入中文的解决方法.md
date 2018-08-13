@@ -12,6 +12,7 @@ tags: [linux]
 首先进入软件的bin目录下，找到启动该软件的XXXX.sh文件
 
 在注释之后的首行添加：
+
 ```shell
 export XMODIFIERS="@im=fcitx"
 export GTK_IM_MODULE="fcitx"
