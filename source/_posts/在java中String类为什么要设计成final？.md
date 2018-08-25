@@ -5,8 +5,6 @@ link: 170621
 tags: java
 ---
 
-#
-
 ## String本质上是一个final类
 
 ```java
