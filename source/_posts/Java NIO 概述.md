@@ -11,6 +11,8 @@ tags: [Java NIO]
 
 1. [java NIO 教程](http://www.liangyongrui.com/posts/180919)
 1. [java NIO 概述](http://www.liangyongrui.com/posts/180919-1)
+1. [java NIO Channel](http://www.liangyongrui.com/posts/180929)
+1. [java NIO Buffer](http://www.liangyongrui.com/posts/180929-1)
 
 ## 概述
 

@@ -180,6 +180,93 @@ public final Buffer rewind() {
 }
 ```
 
-## clear() and compact()
+## clear() 和 compact()
 
-一旦你读完了
+一旦你读完了，你需要把buffer的*读模式*换成*写模式*。所以你得用*clear()*或*compact()*方法。
+
+如果你调用了*clear()*，*position*将回到0，*limit*将等于*capacity*。换句话说，buffer被清空了，事实上buffer中的数据还在，只是指针变了。
+
+如果你的buffer中还有没读的数据，然后你调用了*clear()*，这些数据将会被*遗忘*。如果你只是暂时不想读，你需要用*compact()*方法来切换成*写模式*。*compact()*方法只会清空你已经读的。所有没读的数据将会被移动到buffer的开头，然后数据将会从没读的数据之后写入。
+
+## mark() 和 reset()
+
+你可用用*mark()*方法来标记一个位置，然后用*reset()*方法回到这个位置。从而实现局部反复读取：
+
+```java
+buffer.mark();
+//call buffer.get() a couple of times, e.g. during parsing.
+buffer.reset();  //set position back to mark.
+```
+
+可以参考源码：
+
+```java
+public final Buffer mark() {
+    mark = position;
+    return this;
+}
+
+public final Buffer reset() {
+    int m = mark;
+    if (m < 0)
+        throw new InvalidMarkException();
+    position = m;
+    return this;
+}
+```
+
+## equals() 和 compareTo()
+
+可以用 *equals()* 和 *compareTo()* 来比较两个buffer。
+
+### equals()
+
+如果两个buffer是相等的，必须满足：
+
+1. 他们是相同的类型；
+2. 保存剩余的内容都相同；
+3. 剩余的大小也相同。
+
+可以看出，两个buffer相同并不是所有的元素都要相同，只要两个buffer中剩余的内容都相同即可。
+
+### compareTo()
+
+如果一个buffer比另一个buffer小，需要满足：
+
+1. 第一个不同的元素小于另一个buffer;
+2. 所有元素都相等，但是第一个buffer的元素先耗尽。
+
+这个可以类比两个String的compareTo。
+
+具体细节可以看源码：
+
+```java
+public final int remaining() {
+    return limit - position;
+}
+
+public boolean equals(Object ob) {
+    if (this == ob)
+        return true;
+    if (!(ob instanceof CharBuffer))
+        return false;
+    CharBuffer that = (CharBuffer)ob;
+    if (this.remaining() != that.remaining())
+        return false;
+    int p = this.position();
+    for (int i = this.limit() - 1, j = that.limit() - 1; i >= p; i--, j--)
+        if (!equals(this.get(i), that.get(j)))
+            return false;
+    return true;
+}
+
+public int compareTo(CharBuffer that) {
+    int n = this.position() + Math.min(this.remaining(), that.remaining());
+    for (int i = this.position(), j = that.position(); i < n; i++, j++) {
+        int cmp = compare(this.get(i), that.get(j));
+        if (cmp != 0)
+            return cmp;
+    }
+    return this.remaining() - that.remaining();
+}
+```
