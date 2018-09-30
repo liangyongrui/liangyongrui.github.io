@@ -1,7 +1,7 @@
 ---
 title: Java NIO Buffer
 date: 2018-09-29 15:10:14
-link: 180929
+link: 180929-1
 tags: [Java NIO]
 ---
 
