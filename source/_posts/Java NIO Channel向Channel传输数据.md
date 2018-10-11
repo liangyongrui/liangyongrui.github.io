@@ -40,3 +40,23 @@ toChannel.transferFrom(fromChannel, position, count);
 
 *position*代表目的文件开始的位置，*count*表示要传输的数据大小，如果*fromChannel*中的数据量比count小的话，就全部传输。
 
+另外，一些*SocketChannel*的实现类可能只会传输它已经请求好的数据，因此它不一定会把全部数据都从*ScoketChannel*传到*FileChannel*.
+
+## transferTo()
+
+*transferTo()*方法可以把数据从*FileChannel*中传到别的*Channel*。下面是一个简单的例子：
+
+```java
+var fromFile = new RandomAccessFile("fromFile.txt", "rw");
+FileChannel fromChannel = fromFile.getChannel();
+
+var toFile = new RandomAccessFile("toFile.txt", "rw");
+FileChannel toChannel = toFile.getChannel();
+
+long position = 0;
+long count = fromChannel.size();
+
+fromChannel.transferTo(position, count, toChannel);
+```
+
+和*transferFrom()*方法类似。也要注意*ScoketChannel*是目标Channel的问题，如果目标buffer已经满了，就不会传输了。
