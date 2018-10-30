@@ -71,3 +71,64 @@ int interestSet = SelectionKey.OP_READ | SelectionKey.OP_WRITE;
 
 ## SelectionKey's
 
+就像上一节你看到的那样。注册*Channel*时，会返回一个*SelectionKey*对象。*SelectionKey*对象包含了一些有趣的属性：
+
+* 感兴趣的事件 集合
+* 准备好的事件 集合
+* channel
+* selector
+* 附加对象（可选）
+
+### 感兴趣的事件集合
+
+获取方式：
+
+```java
+int interestSet = selectionKey.interestOps();
+
+boolean isInterestedInAccept  = interestSet & SelectionKey.OP_ACCEPT;
+boolean isInterestedInConnect = interestSet & SelectionKey.OP_CONNECT;
+boolean isInterestedInRead    = interestSet & SelectionKey.OP_READ;
+boolean isInterestedInWrite   = interestSet & SelectionKey.OP_WRITE;
+```
+
+### 准备好的事件集合
+
+获取方式
+
+```java
+int readySet = selectionKey.readyOps();
+//或者
+selectionKey.isAcceptable();
+selectionKey.isConnectable();
+selectionKey.isReadable();
+selectionKey.isWritable();
+```
+
+### Channel + Selector
+
+获取方式
+
+```java
+Channel  channel  = selectionKey.channel();
+Selector selector = selectionKey.selector();
+```
+
+### 附加对象
+
+你可以将附加对象添加到 *SelectionKey*，这是识别特定通道和给通道附加信息的方式。例如，您可以将正在使用的*Buffer*与*Channel*或包含更多聚合数据的对象相关联。
+下面是使用方法：
+
+```java
+selectionKey.attach(theObject);
+Object attachedObj = selectionKey.attachment();
+```
+
+你也可以注册的时候就添加：
+
+```java
+SelectionKey key = channel.register(selector, SelectionKey.OP_READ, theObject);
+```
+
+## 用 Selector 选择 Channels
+
