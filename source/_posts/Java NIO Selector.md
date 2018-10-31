@@ -132,3 +132,42 @@ SelectionKey key = channel.register(selector, SelectionKey.OP_READ, theObject);
 
 ## 用 Selector 选择 Channels
 
+一旦你使用*Selector*注册了一个或多个*Channel*，你就可以调用*select()*方法。这个方法返回你感兴趣事件已准备好的channel。
+
+下面是select()方法：
+
+* int select() : 阻塞，直到有一个channel已经准备好
+* int select(long timeout) : 和select一样，只是多了个最多阻塞时间
+* int selectNow()：不阻塞，不管有没有channel准备好都立刻返回
+
+返回值*int*表示 有多少个*Channel*已经准备好了。也就是，从上一次调用select以来，已经准备好了多少个*Channel*。如果你调用*select()*返回1，代表有一个*Channel*准备好了，如果你又调用一次，又返回1，表示又有一个*Channel*准备好了。如果之前你没做任何操作，那么你就有2个*Channel*。
+
+### selectedKeys()
+
+一旦你调用*select()*方法，然后他的返回值表示已经有一个或多个*channel*准备好了，你可以调用*selectedKeys()*方法来访问已经准备好的*Channel*。
+
+```java
+Set<SelectionKey> selectedKeys = selector.selectedKeys();
+```
+
+你可以迭代selected key set来访问已经准备好的*Channel*：
+
+```java
+Set<SelectionKey> selectedKeys = selector.selectedKeys();
+
+Iterator<SelectionKey> keyIterator = selectedKeys.iterator();
+
+while (keyIterator.hasNext()) {
+    SelectionKey key = keyIterator.next();
+    if (key.isAcceptable()) {
+        // a connection was accepted by a ServerSocketChannel.
+    } else if (key.isConnectable()) {
+        // a connection was established with a remote server.
+    } else if (key.isReadable()) {
+        // a channel is ready for reading
+    } else if (key.isWritable()) {
+        // a channel is ready for writing
+    }
+    keyIterator.remove();
+}
+```
